@@ -32,13 +32,16 @@ function ComponentUseState() {
   );
 }
 //
-
 // useEffect //
 function ComponentUseEffect() {
   const [page, setPage] = useState(1);
 
   const addPage = () => {
     setPage(page + 1);
+  };
+
+  const delayAddPage = () => {
+    setTimeout(() => addPage(), 1);
   };
 
   const Post = () => {
@@ -65,7 +68,7 @@ function ComponentUseEffect() {
     <div className="useEffect" style={{ marginTop: '10px', paddingBottom: '10px', borderBottom: '2px solid orange' }}>
       <h1>2: useEffect</h1>
       <h2>Page: {page}</h2>
-      <button onClick={addPage}>swipe posts</button>
+      <button onClick={delayAddPage}>swipe posts</button>
       <hr />
       <Post page={page}></Post>
     </div>
