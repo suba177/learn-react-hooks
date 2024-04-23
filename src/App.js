@@ -15,7 +15,7 @@ export default function App() {
 }
 
 // useState //
-function ComponentUseState() {
+const ComponentUseState = () => {
   const [visible, setVisibility] = useState(false);
 
   const handleClick = () => {
@@ -36,7 +36,7 @@ function ComponentUseState() {
 }
 //
 // useEffect //
-function ComponentUseEffect() {
+const ComponentUseEffect = () => {
   const [page, setPage] = useState(1);
 
   const addPage = () => {
@@ -79,7 +79,7 @@ function ComponentUseEffect() {
 }
 //
 // useRef //
-function ComponentUseRef() {
+const ComponentUseRef = () => {
 
   const [ value, setValue ] = useState('write for the render')
 
