@@ -1,7 +1,21 @@
-import ComponentMain from "./main";
-import Alert from "./alert";
+import Cars from "./cars";
+import { useState } from "react";
 
 const ComponentUseContext = () => {
+  const [carData, setCarData] = useState([
+    { model: "BMW", id: 1 },
+    { model: "Volga", id: 2 },
+    { model: "Mercedes", id: 3 },
+  ]);
+
+  const deleteCar = (carModel) => {
+    setCarData(
+      carData.filter((car) => {
+        return car.model !== carModel;
+      })
+    );
+  };
+
   return (
     <div
       className="useContext"
@@ -11,8 +25,7 @@ const ComponentUseContext = () => {
         borderBottom: "2px solid red",
       }}
     >
-      <ComponentMain></ComponentMain>
-      <Alert></Alert>
+      <Cars carData={carData} deleteCar={deleteCar}></Cars>
     </div>
   );
 };
