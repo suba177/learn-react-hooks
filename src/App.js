@@ -1,15 +1,16 @@
-import './App.css';
-import { React } from 'react';
-import { useState, useEffect, useRef, useMemo } from 'react';
+import "./App.css";
+import { React } from "react";
+import { useState, useEffect, useRef } from "react";
+// import { useMemo } from 'React'
 
 export default function App() {
   return (
-    <div className="App" style={{ display: 'flex' }}>
-      <main style={{ width: '100%' }}>
+    <div className="App" style={{ display: "flex" }}>
+      <main style={{ width: "100%" }}>
         <ComponentUseState></ComponentUseState>
         <ComponentUseEffect></ComponentUseEffect>
         <ComponentUseRef></ComponentUseRef>
-        <ComponentUseMemo></ComponentUseMemo>
+        {/* <ComponentUseMemo></ComponentUseMemo> */}
       </main>
     </div>
   );
@@ -24,7 +25,10 @@ const ComponentUseState = () => {
   };
 
   return (
-    <div className="useState" style={{ borderBottom: '2px solid red', paddingBottom: '10px' }}>
+    <div
+      className="useState"
+      style={{ borderBottom: "2px solid red", paddingBottom: "10px" }}
+    >
       <h1>1: What is React? (useState Hook)</h1>
       <button onClick={handleClick}>Show (toggler)</button>
       {visible && (
@@ -34,7 +38,7 @@ const ComponentUseState = () => {
       )}
     </div>
   );
-}
+};
 //
 // useEffect //
 const ComponentUseEffect = () => {
@@ -69,7 +73,14 @@ const ComponentUseEffect = () => {
   };
 
   return (
-    <div className="useEffect" style={{ marginTop: '10px', paddingBottom: '10px', borderBottom: '2px solid orange' }}>
+    <div
+      className="useEffect"
+      style={{
+        marginTop: "10px",
+        paddingBottom: "10px",
+        borderBottom: "2px solid orange",
+      }}
+    >
       <h1>2: useEffect</h1>
       <h2>Page: {page}</h2>
       <button onClick={delayAddPage}>swipe posts</button>
@@ -77,69 +88,80 @@ const ComponentUseEffect = () => {
       <Post page={page}></Post>
     </div>
   );
-}
+};
 //
 // useRef //
 const ComponentUseRef = () => {
-  const [ value, setValue ] = useState('write for the render')
+  const [value, setValue] = useState("write for the render");
 
-  const renderCount = useRef(0)
+  const renderCount = useRef(0);
 
-  const prevValue = useRef('')
+  const prevValue = useRef("");
 
-  const inputRef = useRef(null)
-
-
-  useEffect(() => {
-    renderCount.current++
-  })
+  const inputRef = useRef(null);
 
   useEffect(() => {
-    prevValue.current = value
-  }, [value])
+    renderCount.current++;
+  });
+
+  useEffect(() => {
+    prevValue.current = value;
+  }, [value]);
 
   const clearRenders = () => {
-    renderCount.current = 0
-    setValue('')    
-  }
+    renderCount.current = 0;
+    setValue("");
+  };
 
-  const focus = () => inputRef.current.focus()
+  const focus = () => inputRef.current.focus();
   return (
-    <div className="useRef" style={{ marginTop: '10px', paddingBottom: '10px', borderBottom: '2px solid yellow' }}>
+    <div
+      className="useRef"
+      style={{
+        marginTop: "10px",
+        paddingBottom: "10px",
+        borderBottom: "2px solid yellow",
+      }}
+    >
       <h1>3: useRef</h1>
       <h2>the number of renderers of this block: {renderCount.current}</h2>
       <h2>previous status: {prevValue.current}</h2>
-      <input ref={inputRef} type='text' onChange={e => setValue(e.target.value)} value={value} />
+      <input
+        ref={inputRef}
+        type="text"
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+        id="inputRefs"
+      />
       <button onClick={clearRenders}>clear text and renders</button>
       <button onClick={focus}>focus on the text</button>
     </div>
-  )
-}
+  );
+};
 //
 // useMemo //
-const propX = () => {
-  let i = 0
-  while (i < 1000000000) i++
-  return i
-}  
+// const propX = () => {
+//   let i = 0
+//   while (i < 1000000000) i++
+//   return i
+// }
 
-const ComponentUseMemo = () => {
-  const [ number, setNumber ] = useState(1)
+// const ComponentUseMemo = () => {
+//   const [ number, setNumber ] = useState(1)
 
-  const sum = (a,b,d) => (a* (b) / d)
+//   const sum = (a,b,d) => (a* (b) / d)
 
-  useMemo(() => {
-    sum(propX(), number,  1000000000)  
-  }, [propX])
- 
+//   useMemo(() => {
+//     sum(propX(), number,  1000000000)
+//   }, [propX])
 
-  return (    
-    <div className="useMemo" style={{ marginTop: '10px', paddingBottom: '10px', borderBottom: '2px solid green' }}>
-      <h1>4: useMemo </h1>
-      <h2>calculated property: {number}</h2>
-      <button onClick={() => setNumber((prevVal => prevVal + 1))}>+</button>
-      <button onClick={() => setNumber((prevVal => prevVal - 1))}>-</button>
-      <p>в зависимость передано значение содержащее ресурсозатратное вычисление, но счетчик меняется без задержек</p>
-    </div>
-  )
-}
+//   return (
+//     <div className="useMemo" style={{ marginTop: '10px', paddingBottom: '10px', borderBottom: '2px solid green' }}>
+//       <h1>4: useMemo </h1>
+//       <h2>calculated property: {number}</h2>
+//       <button onClick={() => setNumber((prevVal => prevVal + 1))}>+</button>
+//       <button onClick={() => setNumber((prevVal => prevVal - 1))}>-</button>
+//       <p>в зависимость передано значение содержащее ресурсозатратное вычисление, но счетчик меняется без задержек</p>
+//     </div>
+//   )
+// }
