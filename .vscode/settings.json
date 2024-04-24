@@ -1,0 +1,6 @@
+{
+  "workbench.tree.enableStickyScroll": true,
+  "editor.fontSize": 16,
+  "workbench.tree.stickyScrollMaxItemCount": 1,
+  "terminal.integrated.stickyScroll.maxLineCount": 1
+}
