@@ -6,7 +6,7 @@ export default function Car(props) {
   return (
     <div>
       <h1>{model}</h1>
-      <button onClick={() => deleteCar(model)}>delete</button>
+      <button onClick={() => deleteCar(model)}>delete {model}</button>
     </div>
   );
 }
