@@ -1,21 +1,9 @@
+import { React, useContext } from "react";
 import Cars from "./cars";
-import { useState } from "react";
+import { CarContext } from "./context";
 
 const ComponentUseContext = () => {
-  const [carData, setCarData] = useState([
-    { model: "BMW", id: 1 },
-    { model: "Volga", id: 2 },
-    { model: "Mercedes", id: 3 },
-  ]);
-
-  const deleteCar = (carModel) => {
-    setCarData(
-      carData.filter((car) => {
-        return car.model !== carModel;
-      })
-    );
-  };
-
+  const data = useContext(CarContext);
   return (
     <div
       className="useContext"
@@ -25,7 +13,7 @@ const ComponentUseContext = () => {
         borderBottom: "2px solid red",
       }}
     >
-      <Cars carData={carData} deleteCar={deleteCar}></Cars>
+      <Cars carData={data.carData}></Cars>
     </div>
   );
 };

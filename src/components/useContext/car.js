@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CarContext } from "./context";
 
 export default function Car(props) {
-  const { model, deleteCar } = props;
+  const data = useContext(CarContext);
+  const { model } = props;
 
   return (
     <div>
-      <h1>{model}</h1>
-      <button onClick={() => deleteCar(model)}>delete {model}</button>
+      <h2>{model}</h2>
+      <button
+        onClick={() => {
+          data.deleteCar(model);
+        }}
+      >
+        delete {model}
+      </button>
     </div>
   );
 }
