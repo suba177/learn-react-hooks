@@ -2,6 +2,8 @@ import "./App.css";
 import { React } from "react";
 import { useState, useEffect, useRef } from "react";
 // import { useMemo } from 'React'
+import ComponentMain from "./useContext/main";
+import Alert from "./useContext/alert";
 
 export default function App() {
   return (
@@ -11,6 +13,7 @@ export default function App() {
         <ComponentUseEffect></ComponentUseEffect>
         <ComponentUseRef></ComponentUseRef>
         {/* <ComponentUseMemo></ComponentUseMemo> */}
+        <ComponentUseContext></ComponentUseContext>
       </main>
     </div>
   );
@@ -78,7 +81,7 @@ const ComponentUseEffect = () => {
       style={{
         marginTop: "10px",
         paddingBottom: "10px",
-        borderBottom: "2px solid orange",
+        borderBottom: "2px solid red",
       }}
     >
       <h1>2: useEffect</h1>
@@ -120,7 +123,7 @@ const ComponentUseRef = () => {
       style={{
         marginTop: "10px",
         paddingBottom: "10px",
-        borderBottom: "2px solid yellow",
+        borderBottom: "2px solid red",
       }}
     >
       <h1>3: useRef</h1>
@@ -156,7 +159,7 @@ const ComponentUseRef = () => {
 //   }, [propX])
 
 //   return (
-//     <div className="useMemo" style={{ marginTop: '10px', paddingBottom: '10px', borderBottom: '2px solid green' }}>
+//     <div className="useMemo" style={{ marginTop: '10px', paddingBottom: '10px', borderBottom: '2px solid red' }}>
 //       <h1>4: useMemo </h1>
 //       <h2>calculated property: {number}</h2>
 //       <button onClick={() => setNumber((prevVal => prevVal + 1))}>+</button>
@@ -165,3 +168,19 @@ const ComponentUseRef = () => {
 //     </div>
 //   )
 // }
+
+const ComponentUseContext = () => {
+  return (
+    <div
+      className="useContext"
+      style={{
+        marginTop: "10px",
+        paddingBottom: "10px",
+        borderBottom: "2px solid red",
+      }}
+    >
+      <ComponentMain></ComponentMain>
+      <Alert></Alert>
+    </div>
+  );
+};
